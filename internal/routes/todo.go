@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func SetupTodoRoutes(app *fiber.App) {
+func SetupTodoRoutes(app fiber.Router) {
 	// To-Do Routes
 	todo := app.Group("/todos")
 	todo.Get("/", handlers.GetAllTasks)
