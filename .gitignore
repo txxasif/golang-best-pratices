@@ -1,0 +1,54 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+main
+
+# Output of the Go compiler
+*.out
+
+# Configuration files
+# .env
+
+# Dependency directories (for vendored dependencies)
+vendor/
+
+# IDE and editor specific files
+.vscode/
+.idea/
+*.swp
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.old
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build artifacts and caches
+bin/
+build/
+dist/
+node_modules/
+
+# Go build cache
+*.a
+*.o
+go.sum
+
+# Test binary outputs
+*.coverprofile
+
+# Fiber debug pid file
+fiber.pid
+
+# Docker-related files
+docker-compose.override.yml
+.env.docker
