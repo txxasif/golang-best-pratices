@@ -15,6 +15,7 @@ import (
 func main() {
 	// Load environment variables (e.g., DB connection, port)
 	cfg := config.Load()
+
 	// Initialize the database connection
 	dsn := fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
@@ -36,8 +37,8 @@ func main() {
 
 	// Create a new Fiber app
 	app := fiber.New()
-	// Middleware to log the endpoint being hit
 
+	// Middleware to log the endpoint being hit
 	app.Use(func(c *fiber.Ctx) error {
 		fmt.Printf("Endpoint hit: %s %s\n", c.Method(), c.Path())
 		return c.Next()
@@ -45,11 +46,20 @@ func main() {
 
 	// Register all routes
 	routes.SetupRoutes(app)
-	host := cfg.Host
-	port := cfg.Port
-	address := host + ":" + port
-	fmt.Println(address)
+
+	// // Start the WebSocket hub
+	// hub := websocket.InitHub()
+
+	// // Broadcast a message to all connected WebSocket clients every 10 seconds
+	// go func() {
+	// 	for {
+	// 		hub.BroadcastMessage("Hello from the server!")
+	// 		time.Sleep(1 * time.Second)
+	// 	}
+	// }()
 
 	// Start the server
+	address := cfg.Host + ":" + cfg.Port
+	log.Printf("Server is running on %s", address)
 	log.Fatal(app.Listen(address))
 }
